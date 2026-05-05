@@ -1,0 +1,133 @@
+{
+    "name": "st87m01",
+    "config": {
+        "tx": {
+            "help": "TX pin for serial connection. D1 assumed if Arduino Form Factor, needs to be set/overwritten otherwise.",
+            "value": null
+        },
+        "rx": {
+            "help": "RX pin for serial connection. D0 assumed if Arduino Form Factor, needs to be set/overwritten otherwise.",
+            "value": null
+        },
+        "rts": {
+            "help": "RTS pin for serial connection",
+            "value": null
+        },
+        "cts": {
+            "help": "CTS pin for serial connection",
+            "value": null
+        },
+        "baudrate": {
+            "help": "Serial connection baud rate",
+            "value": 115200
+        },
+        "resetn": {
+            "help": "Reset pin for st87m01",
+            "value": null
+        },
+        "wakeup": {
+            "help": "Wakeup pin for st87m01",
+            "value": null
+        },
+        "provide-default": {
+            "help": "Provide as default CellularDevice [true/false]",
+            "value": false
+        },
+        "configure": {
+            "help": "Run modem cold-init (band selection, IPPARAMS, etc.) during init(). Set false to skip when NVM is already configured. [true/false]",
+            "value": true
+        },
+        "default-pdp-type": {
+            "help": "Default PDP type for context creation: \"IP\" (IPv4), \"IPV6\", or \"IPV4V6\". Most NB-IoT networks require \"IP\".",
+            "value": "\"IP\""
+        },
+        "bands": {
+            "help": "Comma-separated NB-IoT bands to enable (e.g. \"8,20\"). Set to null to skip band configuration .",
+            "value": "\"8,20\""
+        },
+        "bandcfg": {
+            "help": "AT#BANDCFG primary band config: \"<id>,0,<band>,<option>,<start100k>\". Null = skip. Example: \"0,0,20,01,7910\" for EU Band 20.",
+            "value": null
+        },
+        "bandcfg_nmo1": {
+            "help": "AT#BANDCFG NMO1 config: \"<id>,1,<pref>,<guard>,<in>,<bw100k>,<offset100k>\". Null = skip.",
+            "value": null
+        },
+        "bandcfg_nmo2": {
+            "help": "AT#BANDCFG NMO2 config: \"<id>,2,<pref>,<guard>,<in>,<bw100k>,<offset100k>\". Null = skip.",
+            "value": null
+        },
+        "bandcfg_nmo3": {
+            "help": "AT#BANDCFG NMO3 config: \"<id>,3,<pref>,<guard>,<in>,<bw100k>,<offset100k>\". Null = skip.",
+            "value": null
+        },
+        "dnsv4": {
+            "help": "Optional IPv4 DNS server (e.g. '\"8.8.8.8\"' with escaped quotes in mbed_app.json5). Empty = rely on network.",
+            "value": "\"8.8.8.8\""
+        },
+        "dnsv6": {
+            "help": "Optional IPv6 DNS server. Set to \"\" to rely on network.",
+            "value": "\"\""
+        },
+        "dns_to_use": {
+            "help": "DNS selection: 1=Network (default), 0=Static only. See ST UM #IPPARAMS for full options.",
+            "value": 1
+        },
+        "tls_enable": {
+            "help": "Enable TLS provisioning check/setup during init [true/false]",
+            "value": false
+        },
+        "tls_default_sslctxid": {
+            "help": "Default TLS security profile ID (0-15) used for TLS sockets if no other profile specified",
+            "value": 0
+        },
+        "tls_ca_cert": {
+            "help": "CA root certificate in DER format as hex string. Empty = skip CA cert provisioning",
+            "value": null
+        },
+        "tls_device_cert": {
+            "help": "Device certificate in DER format as hex string. Empty = skip device cert provisioning",
+            "value": null
+        },
+        "tls_generate_key": {
+            "help": "Generate private key on modem if not present (true) or expect pre-provisioned key (false)",
+            "value": false
+        },
+        "tls_key_size": {
+            "help": "Key size in bytes for key generation (32 for P-256, 48 for P-384)",
+            "value": 32
+        },
+        "tls_key_storage": {
+            "help": "Key storage location: 1=OTP, 2=Flash (persistent), 3=RetentionRAM, 4=RAM",
+            "value": 2
+        },
+        "tls_support_pem": {
+            "help": "Enable PEM-to-DER conversion for certificates. Disable to save code size if using DER only.",
+            "value": true,
+            "macro_name": "MBED_CONF_ST87M01_TLS_SUPPORT_PEM"
+        },
+        "socket_rx_buffer_size": {
+            "help": "Internal receive buffer per socket (bytes). Must hold complete TLS records. Increase if TLS handshake fails.",
+            "value": 4096,
+            "macro_name": "MBED_CONF_ST87M01_SOCKET_RX_BUFFER_SIZE"
+        }
+    },
+    "target_overrides": {
+        "*": {},
+        "NUCLEO_L4A6ZG": {
+            "st87m01.baudrate": 115200,
+            "st87m01.tx": "ARDUINO_UNO_D1",
+            "st87m01.rx": "ARDUINO_UNO_D0",
+            "st87m01.resetn": "ARDUINO_UNO_D9",
+            "st87m01.wakeup": "ARDUINO_UNO_D8"
+        },
+        "NUCLEO_L496ZG": {
+            "st87m01.baudrate": 115200,
+            "st87m01.tx": "ARDUINO_UNO_D1",
+            "st87m01.rx": "ARDUINO_UNO_D0",
+            "st87m01.resetn": "ARDUINO_UNO_D9",
+            "st87m01.wakeup": "ARDUINO_UNO_D8"
+        }
+    },
+    "macros": []
+}
