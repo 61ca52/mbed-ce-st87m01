@@ -202,6 +202,10 @@ socket.connect("secure.example.com", 443);
 socket.send("GET / HTTP/1.1\r\n...", ...);
 ```
 
+## Example app
+
+EVKIT example app that wires this driver to a target board: [mbed-ce-st87m01-app](https://github.com/61ca52/mbed-ce-st87m01-app)
+
 ## License
 
 Apache License 2.0. See `LICENSE`.
